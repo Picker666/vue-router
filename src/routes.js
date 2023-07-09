@@ -7,6 +7,9 @@ import SecondPosts from './components/SecondPosts';
 import ThirdPage from './components/ThirdPage';
 import ThirdPageA from './components/ThirdPageA';
 import ThirdPageB from './components/ThirdPageB';
+import FourPage from './components/FourPage';
+import FourPageA from './components/FourPageA';
+import FourPageB from './components/FourPageB';
 import NotFound from './components/NotFound';
 
 const routes = [
@@ -26,11 +29,28 @@ const routes = [
         component: SecondPosts
       }
     ]
-  }, {
+  },
+  {
     path: '/thirdPage', name: 'thirdPage', components: {
       default: ThirdPage,
       a: ThirdPageA,
       b: ThirdPageB
+    }
+  },
+  {
+    path: '/fourthPage/:id', name: 'fourthPage', components: {
+      default: FourPage,
+      a: FourPageA,
+      b: FourPageB
+
+    },
+    props: {
+      default: true,
+      a: { objId: '777' },
+      b: route => {
+        console.log('route: ', route);
+        return{ objId: route.params.id}
+      }
     }
   },
   {
