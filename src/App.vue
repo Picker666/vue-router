@@ -7,6 +7,8 @@
       <router-link to="/secondPage/66">second Page 66</router-link>
     </p>
     <router-view></router-view>
+    <router-view name="a"></router-view>
+    <router-view name="b"></router-view>
   </div>
 </template>
 

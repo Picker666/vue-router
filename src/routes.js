@@ -4,10 +4,15 @@ import FirstPage from './components/FirstPage';
 import SecondPage from './components/SecondPage';
 import SecondProfile from './components/SecondProfile';
 import SecondPosts from './components/SecondPosts';
+import ThirdPage from './components/ThirdPage';
+import ThirdPageA from './components/ThirdPageA';
+import ThirdPageB from './components/ThirdPageB';
 import NotFound from './components/NotFound';
 
 const routes = [
-  { path: '/', name: 'home page', component: HomePage },
+  // { path: '/', redirect: '/home' },
+  { path: '/', redirect: { name: 'home page' } },
+  { path: '/home', name: 'home page', component: HomePage },
   { path: '/helloWorld', name: 'hello world', component: HelloWorld },
   { path: '/firstPage', name: 'first page', component: FirstPage },
   {
@@ -21,6 +26,12 @@ const routes = [
         component: SecondPosts
       }
     ]
+  }, {
+    path: '/thirdPage', name: 'thirdPage', components: {
+      default: ThirdPage,
+      a: ThirdPageA,
+      b: ThirdPageB
+    }
   },
   {
     path: '*', component: NotFound
