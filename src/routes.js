@@ -14,7 +14,7 @@ import NotFound from './components/NotFound';
 
 const routes = [
   // { path: '/', redirect: '/home' },
-  { path: '/', redirect: { name: 'home page' } },
+  // { path: '/', redirect: { name: 'home page' } },
   { path: '/home', name: 'home page', component: HomePage },
   { path: '/helloWorld', name: 'hello world', component: HelloWorld },
   {

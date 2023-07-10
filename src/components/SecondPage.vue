@@ -3,7 +3,9 @@
     <h2>Second page</h2>
     <router-link to="/secondPage/88/profile">second page 88</router-link>
     <router-link to="/secondPage/66/posts">second page 66</router-link>
-    <router-view></router-view>
+    <transition :name="transitionName">
+      <router-view></router-view>
+    </transition>
     <p>
       <button @click="handleHomeClick">home</button>
       <button @click="handle200Click">second page 00</button>
@@ -16,6 +18,11 @@
 <script>
 export default {
   name: 'SecondPage',
+  data: function () {
+    return {
+      transitionName: 'slide-right'
+    }
+  },
   methods: {
     handleHomeClick() {
       this.$router.push('/firstPage')
@@ -36,6 +43,9 @@ export default {
   watch: {
     $route(to, from) {
       console.log('SecondComponent == watch $route == to, from: ', to, from);
+      const toDepth = to.path.split('/').length
+      const fromDepth = from.path.split('/').length
+      this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
     }
   },
   beforeRouteEnter(to, from, next) {
