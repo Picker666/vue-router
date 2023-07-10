@@ -35,12 +35,31 @@ export default {
   },
   watch: {
     $route(to, from) {
-      console.log('to, from: ', to, from);
+      console.log('SecondComponent == watch $route == to, from: ', to, from);
     }
   },
-  beforeRouteUpdate(to, from, next) {
-    console.log('to, from, next: ', to, from);
+  beforeRouteEnter(to, from, next) {
+    console.log('SecondComponent == beforeRouteEnter == to, from: ', to, from);
     next();
+    // 在渲染该组件的对应路由被 confirm 前调用
+    // 不！能！获取组件实例 `this`
+    // 因为当守卫执行前，组件实例还没被创建
+    // next(vm => {
+    //   // 通过 `vm` 访问组件实例
+    // })
+    // ...
+  },
+  beforeRouteLeave(to, from, next) {
+    console.log('SecondComponent == beforeRouteLeave == to, from: ', to, from);
+    next();
+    // 导航离开该组件的对应路由时调用
+    // 可以访问组件实例 `this`
+  },
+  beforeRouteUpdate(to, from, next) {
+    console.log('SecondComponent == beforeRouteUpdate == to, from, next: ', to, from);
+    next();
+    // 在当前路由改变，但是该组件被复用时调用
+    // 可以访问组件实例 `this`
   },
   beforeCreate() {
     console.log('================================beforeCreate', this.$route.params.id);

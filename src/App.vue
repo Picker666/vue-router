@@ -5,6 +5,7 @@
       <router-link v-for="r in routes" :to="r.path" :key="r.path">{{ r.name }}</router-link>
       <router-link to="/secondPage/88">second Page 88</router-link>
       <router-link to="/secondPage/66">second Page 66</router-link>
+      <router-link to="/testing">testing</router-link>
     </p>
     <router-view></router-view>
     <router-view name="a"></router-view>

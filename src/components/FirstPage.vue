@@ -7,10 +7,15 @@
 <script>
 export default {
   name: 'FirstPage',
-  methods: {
-    goBack() {
-      window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/');
-    }
-  }
+  beforeRouteEnter(to, from, next) {
+    console.log('FirstComponent == beforeRouteEnter == to, from: ', to, from);
+    next();
+    // ...
+  },
+  beforeRouteLeave(to, from, next) {
+    console.log('FirstComponent == beforeRouteLeave == to, from: ', to, from);
+    next();
+    // ...
+  },
 }
 </script>
